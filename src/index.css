@@ -1,0 +1,436 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #f8fafc; /* Pristine Light Background */
+  --card-color: #ffffff; /* White card layout */
+  --card-hover: #f1f5f9; /* Soft card hover highlight */
+  --border-color: #e2e8f0; /* Crisp soft border */
+  --text-main: #0f172a; /* Main text charcoal dark */
+  --text-secondary: #475569; /* Slate secondary label */
+  --text-muted: #94a3b8; /* Muted descriptor text */
+  --primary-color: #2563eb; /* Cobalt Primary blue for Light mode */
+  --primary-bg: rgba(37, 99, 235, 0.06);
+  --accent-color: #10b981; /* Emerald accent */
+
+  /* Button Colors - Light Mode */
+  --btn-num-bg: #ffffff;
+  --btn-num-text: #0f172a;
+  --btn-num-hover: #f1f5f9;
+
+  --btn-op-bg: #eef2ff;
+  --btn-op-text: #6366f1;
+  --btn-op-hover: #e0e7ff;
+
+  --btn-action-bg: #e9edf5;
+  --btn-action-text: #475569;
+  --btn-action-hover: #e1e7f0;
+
+  --btn-util-bg: #f5f3ff;
+  --btn-util-text: #6366f1;
+  --btn-util-hover: #ede9fe;
+
+  --btn-eq-bg: #6366f1;
+  --btn-eq-text: #ffffff;
+  --btn-eq-hover: #4f46e5;
+  --btn-eq-border: transparent;
+}
+
+.dark {
+  --bg-color: #0a0a0d; /* Noble deep charcoal-black, a little bit light, very premium */
+  --card-color: #121217; /* Elegant dark charcoal card container background, not full black */
+  --card-hover: #1b1b22; /* Hover background highlight */
+  --border-color: #1f1f27; /* Sophisticated fine borders */
+  --text-main: #ffffff; /* Crisp white main text */
+  --text-secondary: #a0aec0; /* Balanced dim label text */
+  --text-muted: #4e5566; 
+  --primary-color: #818cf8; /* Indigo accent color for interactive state */
+  --primary-bg: rgba(129, 140, 248, 0.12);
+  --accent-color: #818cf8; 
+
+  /* Button Colors - Dark Mode (All buttons set to shades of black/charcoal but NOT fully black) */
+  --btn-num-bg: #16161c;
+  --btn-num-text: #ffffff;
+  --btn-num-hover: #21212a;
+
+  --btn-op-bg: #1b1b23;
+  --btn-op-text: #818cf8;
+  --btn-op-hover: #262632;
+
+  --btn-action-bg: #191921;
+  --btn-action-text: #818cf8;
+  --btn-action-hover: #23232e;
+
+  --btn-util-bg: #131319;
+  --btn-util-text: #818cf8;
+  --btn-util-hover: #1d1d26;
+
+  --btn-eq-bg: #6366f1;
+  --btn-eq-text: #ffffff;
+  --btn-eq-hover: #4f46e5;
+  --btn-eq-border: transparent;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom palette mapping for structural elements */
+  --color-canvas-bg: var(--bg-color);
+  --color-card-bg: var(--card-color);
+  --color-card-hover: var(--card-hover);
+  --color-border-main: var(--border-color);
+  --color-text-main: var(--text-main);
+  --color-text-dim: var(--text-secondary);
+  --color-text-mute: var(--text-muted);
+  --color-brand-primary: var(--primary-color);
+  --color-brand-primary-bg: var(--primary-bg);
+  --color-brand-accent: var(--accent-color);
+
+  /* Button Colors mapped directly from theme variables */
+  --color-btn-num-bg: var(--btn-num-bg);
+  --color-btn-num-text: var(--btn-num-text);
+  --color-btn-num-hover: var(--btn-num-hover);
+
+  --color-btn-op-bg: var(--btn-op-bg);
+  --color-btn-op-text: var(--btn-op-text);
+  --color-btn-op-hover: var(--btn-op-hover);
+
+  --color-btn-action-bg: var(--btn-action-bg);
+  --color-btn-action-text: var(--btn-action-text);
+  --color-btn-action-hover: var(--btn-action-hover);
+
+  --color-btn-util-bg: var(--btn-util-bg);
+  --color-btn-util-text: var(--btn-util-text);
+  --color-btn-util-hover: var(--btn-util-hover);
+
+  --color-btn-eq-bg: var(--btn-eq-bg);
+  --color-btn-eq-text: var(--btn-eq-text);
+  --color-btn-eq-hover: var(--btn-eq-hover);
+  --color-btn-eq-border: var(--btn-eq-border);
+}
+
+@layer utilities {
+  .btn-num {
+    @apply p-4.5 text-lg font-bold tracking-tight rounded-2xl transition-all shadow-xs hover:scale-105 active:scale-95 bg-card-bg hover:bg-card-hover border border-border-main/40 text-text-main cursor-pointer;
+  }
+  .btn-op {
+    @apply p-4.5 text-lg font-bold rounded-2xl transition-all shadow-xs hover:scale-105 active:scale-95 bg-brand-primary-bg hover:opacity-90 text-brand-primary border border-brand-primary/10 cursor-pointer;
+  }
+  .btn-action {
+    @apply p-4.5 text-base font-bold rounded-2xl transition-all shadow-xs hover:scale-105 active:scale-95 bg-card-hover/80 hover:bg-card-hover border border-border-main/50 text-text-dim cursor-pointer;
+  }
+  .btn-equals {
+    @apply p-4.5 text-xl font-extrabold rounded-2xl transition-all shadow-md hover:scale-105 active:scale-95 bg-brand-primary hover:bg-brand-primary/90 text-white cursor-pointer shadow-brand-primary/10;
+  }
+  .btn-sci {
+    @apply py-2 px-1 text-xs font-semibold rounded-xl transition-all hover:bg-card-hover text-brand-primary cursor-pointer text-center;
+  }
+}
+
+/* Hide scrollbar fully for Chrome, Safari, Edge and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Style for default scrollbars to make them extremely thin and invisible by coloring them the background color only */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-color) !important;
+  border-radius: 9999px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color) !important;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-color) var(--bg-color) !important;
+}
+
+/* Dynamic Navy Converter Theme Adapter for superb high contrast styling */
+.navy-converter-palette {
+  background-color: #0b132b !important;
+  color: #ffffff !important;
+  border-color: rgba(30, 58, 138, 0.45) !important;
+}
+
+.navy-converter-palette h3 {
+  color: #ffffff !important;
+}
+
+.navy-converter-palette h4 {
+  color: #22d3ee !important; /* Cyan bright titles */
+}
+
+.navy-converter-palette p {
+  color: #cbd5e1 !important; /* Balanced legible text */
+}
+
+.navy-converter-palette label {
+  color: #22d3ee !important; /* Cyan bright labels */
+}
+
+/* Uniformly adjust all forms, lists, result columns, and dashboard block backgrounds inside the active view cards */
+.navy-converter-palette .bg-slate-50,
+.navy-converter-palette .bg-slate-100,
+.navy-converter-palette .bg-slate-900,
+.navy-converter-palette .bg-slate-950,
+.navy-converter-palette .bg-white,
+.navy-converter-palette .bg-indigo-50,
+.navy-converter-palette .bg-indigo-500\/5,
+.navy-converter-palette .bg-emerald-500\/5 {
+  background-color: #121c3d !important;
+  border-color: rgba(30, 58, 138, 0.4) !important;
+}
+
+/* Handle specific local elements color correction */
+.dark .navy-converter-palette .bg-slate-50,
+.dark .navy-converter-palette .bg-slate-100,
+.dark .navy-converter-palette .bg-slate-900,
+.dark .navy-converter-palette .bg-slate-950,
+.dark .navy-converter-palette .bg-white,
+.dark .navy-converter-palette .bg-indigo-50,
+.dark .navy-converter-palette .bg-indigo-500\/5,
+.dark .navy-converter-palette .bg-emerald-500\/5 {
+  background-color: #070b1a !important;
+  border-color: rgba(30, 58, 138, 0.5) !important;
+}
+
+/* Force legibility of dark gray labels or descriptors */
+.navy-converter-palette .text-slate-800,
+.navy-converter-palette .text-slate-700,
+.navy-converter-palette .text-slate-600 {
+  color: #f1f5f9 !important;
+}
+
+.navy-converter-palette .text-slate-500,
+.navy-converter-palette .text-slate-400 {
+  color: #94a3b8 !important;
+}
+
+.navy-converter-palette .text-indigo-600,
+.navy-converter-palette .text-indigo-400 {
+  color: #38bdf8 !important; /* Premium sky highlight */
+}
+
+.navy-converter-palette input,
+.navy-converter-palette select {
+  background-color: #121c3d !important;
+  color: #ffffff !important;
+  border-color: rgba(30, 58, 138, 0.45) !important;
+}
+
+.dark .navy-converter-palette input,
+.dark .navy-converter-palette select {
+  background-color: #070b1a !important;
+  color: #ffffff !important;
+  border-color: rgba(30, 58, 138, 0.5) !important;
+}
+
+/* Light Mode Converter Styling - Clean white theme */
+.light-converter-palette {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #e5e7eb !important;
+}
+
+.light-converter-palette h3 {
+  color: #1f2937 !important;
+}
+
+.light-converter-palette h4 {
+  color: #2563eb !important; /* Indigo titles for light mode */
+}
+
+.light-converter-palette p {
+  color: #6b7280 !important; /* Balanced gray text */
+}
+
+.light-converter-palette label {
+  color: #2563eb !important; /* Indigo labels */
+}
+
+/* Uniformly adjust all forms, lists, result columns, and dashboard block backgrounds inside light mode converter cards */
+.light-converter-palette .bg-slate-50,
+.light-converter-palette .bg-slate-100,
+.light-converter-palette .bg-slate-900,
+.light-converter-palette .bg-slate-950,
+.light-converter-palette .bg-white,
+.light-converter-palette .bg-indigo-50,
+.light-converter-palette .bg-indigo-500\/5,
+.light-converter-palette .bg-emerald-500\/5,
+.light-converter-palette .bg-emerald-50,
+.light-converter-palette .bg-emerald-500\/5 {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+}
+
+/* Text color adjustments for light mode */
+.light-converter-palette .text-slate-800,
+.light-converter-palette .text-slate-700,
+.light-converter-palette .text-slate-600 {
+  color: #374151 !important;
+}
+
+.light-converter-palette .text-slate-500,
+.light-converter-palette .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+.light-converter-palette .text-indigo-600,
+.light-converter-palette .text-indigo-400 {
+  color: #2563eb !important; /* Indigo for interactive elements */
+}
+
+.light-converter-palette .text-cyan-400,
+.light-converter-palette .text-cyan-400 {
+  color: #2563eb !important; /* Replace cyan with indigo */
+}
+
+.light-converter-palette input,
+.light-converter-palette select {
+  background-color: #ffffff !important;
+  color: #1f2937 !important;
+  border-color: #d1d5db !important;
+}
+
+.light-converter-palette input:focus,
+.light-converter-palette select:focus {
+  background-color: #f9fafb !important;
+  border-color: #2563eb !important;
+}
+
+/* Dark Mode Home Screen Converter Cards - Navy Blue Styling */
+.dark #hub-item-conv_curr,
+.dark #hub-item-calc_gst,
+.dark #hub-item-calc_loan,
+.dark #hub-item-conv_discount,
+.dark #hub-item-conv_bmi,
+.dark #hub-item-conv_age,
+.dark #hub-item-conv_date,
+.dark #hub-item-conv_num,
+.dark #hub-item-conv_area,
+.dark #hub-item-conv_length,
+.dark #hub-item-conv_mass,
+.dark #hub-item-conv_data,
+.dark #hub-item-conv_speed,
+.dark #hub-item-conv_temp,
+.dark #hub-item-conv_time,
+.dark #hub-item-conv_volume {
+  background-color: #0b132b !important;
+  border-color: rgba(30, 58, 138, 0.3) !important;
+}
+
+.dark #hub-item-conv_curr h4,
+.dark #hub-item-calc_gst h4,
+.dark #hub-item-calc_loan h4,
+.dark #hub-item-conv_discount h4,
+.dark #hub-item-conv_bmi h4,
+.dark #hub-item-conv_age h4,
+.dark #hub-item-conv_date h4,
+.dark #hub-item-conv_num h4,
+.dark #hub-item-conv_area h4,
+.dark #hub-item-conv_length h4,
+.dark #hub-item-conv_mass h4,
+.dark #hub-item-conv_data h4,
+.dark #hub-item-conv_speed h4,
+.dark #hub-item-conv_temp h4,
+.dark #hub-item-conv_time h4,
+.dark #hub-item-conv_volume h4 {
+  color: #ffffff !important;
+}
+
+.dark #hub-item-conv_curr p,
+.dark #hub-item-calc_gst p,
+.dark #hub-item-calc_loan p,
+.dark #hub-item-conv_discount p,
+.dark #hub-item-conv_bmi p,
+.dark #hub-item-conv_age p,
+.dark #hub-item-conv_date p,
+.dark #hub-item-conv_num p,
+.dark #hub-item-conv_area p,
+.dark #hub-item-conv_length p,
+.dark #hub-item-conv_mass p,
+.dark #hub-item-conv_data p,
+.dark #hub-item-conv_speed p,
+.dark #hub-item-conv_temp p,
+.dark #hub-item-conv_time p,
+.dark #hub-item-conv_volume p {
+  color: #cbd5e1 !important;
+}
+
+.dark #hub-item-conv_curr span,
+.dark #hub-item-calc_gst span,
+.dark #hub-item-calc_loan span,
+.dark #hub-item-conv_discount span,
+.dark #hub-item-conv_bmi span,
+.dark #hub-item-conv_age span,
+.dark #hub-item-conv_date span,
+.dark #hub-item-conv_num span,
+.dark #hub-item-conv_area span,
+.dark #hub-item-conv_length span,
+.dark #hub-item-conv_mass span,
+.dark #hub-item-conv_data span,
+.dark #hub-item-conv_speed span,
+.dark #hub-item-conv_temp span,
+.dark #hub-item-conv_time span,
+.dark #hub-item-conv_volume span {
+  color: #22d3ee !important;
+}
+
+.dark #hub-item-calc_percentage,
+.dark #hub-item-calc_compound,
+.dark #hub-item-calc_investment,
+.dark #hub-item-calc_sip,
+.dark #hub-item-calc_graph,
+.dark #hub-item-calc_scientific_graph,
+.dark #hub-item-calc_academic,
+.dark #hub-item-calc_water_intake {
+  background-color: #0b132b !important;
+  border-color: rgba(30, 58, 138, 0.3) !important;
+}
+
+.dark #hub-item-calc_percentage h4,
+.dark #hub-item-calc_compound h4,
+.dark #hub-item-calc_investment h4,
+.dark #hub-item-calc_sip h4,
+.dark #hub-item-calc_graph h4,
+.dark #hub-item-calc_scientific_graph h4,
+.dark #hub-item-calc_academic h4,
+.dark #hub-item-calc_water_intake h4 {
+  color: #ffffff !important;
+}
+
+.dark #hub-item-calc_percentage p,
+.dark #hub-item-calc_compound p,
+.dark #hub-item-calc_investment p,
+.dark #hub-item-calc_sip p,
+.dark #hub-item-calc_graph p,
+.dark #hub-item-calc_scientific_graph p,
+.dark #hub-item-calc_academic p,
+.dark #hub-item-calc_water_intake p {
+  color: #cbd5e1 !important;
+}
+
+
+

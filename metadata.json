@@ -1,0 +1,6 @@
+{
+  "name": "CalcVerse",
+  "description": "A highly polished, professional mobile-style calculator suite featuring standard & scientific calculation, currency, GST, BMI, age, date, discount, and diverse unit and numeral system conversions.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
